@@ -2,13 +2,13 @@ import json
 import requests
 from urllib import parse
 
-clist=[]
 class CampingService:
 
     def __init__(self):
         self.url = ''
         self.key = ''
         self.page = 1
+        self.clist = []
 
     def saveVo(self, data):
         dkey = ['facltNm', 'lineIntro', 'intro', 'manageSttus', 'featureNm', 'doNm', 'sigungNum', 'addr1', 'addr2', 'mapX', 'mapY', 'direction', 'tel', 'homepage',
@@ -144,7 +144,7 @@ class CampingService:
         items = body['items']
         data = items['item']
 
-        clist.clear()
+        self.clist.clear()
         for c in data:
             if addr.strip() in c['addr1'].strip():
                 dkey = ['facltNm', 'lineIntro', 'intro', 'manageSttus', 'featureNm', 'doNm', 'sigungNum', 'addr1',
@@ -163,9 +163,9 @@ class CampingService:
                         vo2[dk] = 'None'
                     else:
                         vo2[dk] = c[dk]
-                clist.append(vo2)
+                self.clist.append(vo2)
 
-        return clist
+        return self.clist
 
 
     def getCampByName(self, keyword):
@@ -183,7 +183,7 @@ class CampingService:
         body = response['body']
         items = body['items']
         data = items['item']
-        clist.clear()
+        self.clist.clear()
         for c in data:
             print('이름검색:',c)
             if keyword.strip() in c['facltNm'].strip():
@@ -203,12 +203,12 @@ class CampingService:
                         vo2[dk] = 'None'
                     else:
                         vo2[dk] = c[dk]
-                clist.append(vo2)
-        return clist
+                self.clist.append(vo2)
+        return self.clist
 
     def getDetailBySearch(self,facltNm):
         c = {}
-        for cl in clist:
+        for cl in self.clist:
             if facltNm.strip() == cl['facltNm'].strip():
                 c =cl
         return c
