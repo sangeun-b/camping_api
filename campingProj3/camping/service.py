@@ -1,6 +1,7 @@
 import json
 import requests
 from urllib import parse
+import config
 from bs4 import BeautifulSoup
 
 class CampingService:
@@ -62,7 +63,7 @@ class CampingService:
 
     def getCamping(self,pageNo):
         self.url = 'http://api.visitkorea.or.kr/openapi/service/rest/GoCamping/basedList?'
-        self.key = 'HP6X0ANLG4fD7izU7D5NLt62p%2FFWoioo%2BlObIBdA6AjC1UdonTMZsPI%2Brhtf7XZo3TvXhcywJZJ6M%2BFLrPtxVA%3D%3D'
+        self.key = config.key
         self.url += 'ServiceKey=' + self.key
         pageNo = pageNo
         self.url += '&numOfRows=10&pageNo=' + str(pageNo)
@@ -80,7 +81,7 @@ class CampingService:
 
     def getNextPage(self,pageNo):
         self.url = 'http://api.visitkorea.or.kr/openapi/service/rest/GoCamping/basedList?'
-        self.key = 'HP6X0ANLG4fD7izU7D5NLt62p%2FFWoioo%2BlObIBdA6AjC1UdonTMZsPI%2Brhtf7XZo3TvXhcywJZJ6M%2BFLrPtxVA%3D%3D'
+        self.key = config.key
         self.url += 'ServiceKey=' + self.key
         pageNo += 1
         self.url += '&numOfRows=10&pageNo='+str(pageNo)
@@ -98,7 +99,7 @@ class CampingService:
 
     def getPrePage(self,pageNo):
         self.url = 'http://api.visitkorea.or.kr/openapi/service/rest/GoCamping/basedList?'
-        self.key = 'HP6X0ANLG4fD7izU7D5NLt62p%2FFWoioo%2BlObIBdA6AjC1UdonTMZsPI%2Brhtf7XZo3TvXhcywJZJ6M%2BFLrPtxVA%3D%3D'
+        self.key = config.key
         self.url += 'ServiceKey=' + self.key
         pageNo -= 1
         self.url += '&numOfRows=10&pageNo=' + str(pageNo)
@@ -116,7 +117,7 @@ class CampingService:
 
     def getDetail(self,pageNo,facltNm):
         self.url = 'http://api.visitkorea.or.kr/openapi/service/rest/GoCamping/basedList?'
-        self.key = 'HP6X0ANLG4fD7izU7D5NLt62p%2FFWoioo%2BlObIBdA6AjC1UdonTMZsPI%2Brhtf7XZo3TvXhcywJZJ6M%2BFLrPtxVA%3D%3D'
+        self.key = config.key
         self.url += 'ServiceKey=' + self.key
         self.url += '&numOfRows=10&pageNo=' + str(pageNo)
         self.url += '&MobileOS=ETC&MobileApp=TestApp&_type=json'
@@ -133,7 +134,7 @@ class CampingService:
 
     def getCampByaddr(self, addr):
         self.url = 'http://api.visitkorea.or.kr/openapi/service/rest/GoCamping/basedList?'
-        self.key = 'ekde%2BjriV1xwCQEu5ZXb9crsoWrSBKXGkgeWBSscRS8jeaZ51rYplwcXojkZb0JtVY5LvFpfrhZk0bG9VAvWhw%3D%3D'
+        self.key = config.key
         self.url += 'ServiceKey=' + self.key
         self.url += '&numOfRows=2910&pageNo=1'
         self.url += '&MobileOS=ETC&MobileApp=TestApp&_type=json'
@@ -171,7 +172,7 @@ class CampingService:
 
     def getCampByName(self, keyword):
         self.url = 'http://api.visitkorea.or.kr/openapi/service/rest/GoCamping/searchList?'
-        self.key = 'ekde%2BjriV1xwCQEu5ZXb9crsoWrSBKXGkgeWBSscRS8jeaZ51rYplwcXojkZb0JtVY5LvFpfrhZk0bG9VAvWhw%3D%3D'
+        self.key = config.key
         self.url += 'ServiceKey=' + self.key
         self.url += '&MobileOS=ETC&MobileApp=AppTest&_type=json'
 
