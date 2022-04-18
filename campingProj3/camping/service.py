@@ -1,6 +1,7 @@
 import json
 import requests
 from urllib import parse
+from bs4 import BeautifulSoup
 
 class CampingService:
 
@@ -212,6 +213,7 @@ class CampingService:
             if facltNm.strip() == cl['facltNm'].strip():
                 c =cl
         return c
+
 
 
 

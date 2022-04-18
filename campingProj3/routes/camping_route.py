@@ -1,6 +1,5 @@
 from flask import render_template, request, Blueprint
-from campingProj3.camping.service import CampingService
-import campingProj3.camping.service as service
+import camping.service as service
 
 cser = service.CampingService()
 
